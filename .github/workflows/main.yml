@@ -11,3 +11,10 @@ concurrency:
 jobs:
   test:
     uses: ./.github/workflows/test.yml
+
+  release:
+    if: github.ref == 'refs/heads/main'
+    needs: test
+    uses: ./.github/workflows/release.yml
+    secrets:
+      PERSONAL_ACCESS_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

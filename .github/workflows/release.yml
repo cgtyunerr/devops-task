@@ -1,0 +1,54 @@
+---
+name: Release
+
+on:
+  workflow_call:
+    secrets:
+        PERSONAL_ACCESS_TOKEN:
+          required: true
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          fetch-depth: 0
+          submodules: true
+
+      - name: Setup Python 3
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.11'
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: pip install commitizen
+
+      - name: commitizen
+        id: commitizen
+        continue-on-error: true
+        uses: commitizen-tools/commitizen-action@0.16.2
+        with:
+          github_token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
+          changelog_increment_filename: body.md
+          branch: main
+
+      - name: Create GitHub release
+        if: steps.commitizen.outcome == 'success'
+        uses: softprops/action-gh-release@v1
+        with:
+          body_path: body.md
+          tag_name: ${{ env.REVISION }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.PERSONAL_ACCESS_TOKEN }}

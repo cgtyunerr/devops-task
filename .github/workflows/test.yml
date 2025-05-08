@@ -10,6 +10,14 @@ jobs:
     strategy:
       fail-fast: false
     environment: test
+    env:
+      DB__PORT: 5432
+      DB__PASS: dbpass
+      DB__USER: dbuser
+      DB__NAME: postgres
+      DB__HOST: localhost
+      LOG_LEVEL: info
+      JWT_SECRET: "secret"
     steps:
       - name: Checkout
         uses: actions/checkout@v2

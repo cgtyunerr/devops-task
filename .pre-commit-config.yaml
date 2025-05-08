@@ -21,11 +21,6 @@ repos:
         args: [--branch, main]
       - id: trailing-whitespace
 
-  - repo: https://github.com/facebook/usort
-    rev: v1.0.7
-    hooks:
-      - id: usort
-
   - repo: https://github.com/ambv/black
     rev: 25.1.0
     hooks:

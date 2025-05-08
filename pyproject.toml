@@ -1,0 +1,56 @@
+[tool.poetry]
+name = "devops-task"
+version = "0.1.0"
+description = ""
+authors = ["Çağatay Üner <cgtyuner06@gmail.com>"]
+readme = "README.md"
+packages = [{include = "app"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+fastapi = {version = "^0.115.8", extras = ["all"]}
+
+[tool.poetry.group.dev.dependencies]
+libcst = "1.3.1"
+pytest = "^8.3.4"
+pytest-asyncio = "^0.25.3"
+usort = "^1.0.8.post1"
+black = "^25.1.0"
+coverage = "^7.6.10"
+mypy = "^1.15.0"
+commitizen = "^4.2.2"
+pre-commit = "^4.1.0"
+
+[tool.poetry.group.docs.dependencies]
+mkdocs = "^1.6.1"
+mkdocs-gen-files = "^0.5.0"
+mkdocs-autolinks-plugin = "^0.7.1"
+mkdocs-git-revision-date-localized-plugin = "^1.3.0"
+mkdocs-material = "^9.6.3"
+mkdocstrings = "^0.28.0"
+mkdocstrings-python-legacy = "^0.2.4"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.commitizen]
+name = "cz_conventional_commits"
+version = "0.1.0"
+tag_format = "$version"
+version_files = ["pyproject.toml", "app/api/app.py"]
+
+[tool.black]
+line-length = 79
+target-version = ['py311']
+include = '\.pyi?$'
+
+[tool.pydocstyle]
+convention = "google"
+ignore_decorators = "overrides"
+
+[tool.mypy]
+plugins = "pydantic.mypy"
+ignore_missing_imports = true
+strict_optional =  false
+

@@ -46,3 +46,10 @@ jobs:
         run: |
           poetry lock
           poetry install
+
+      - name: Create test environment
+        run: |
+          scripts/test-setup.sh
+
+      - name: Project tests
+        run: poetry run python -m pytest -lv tests

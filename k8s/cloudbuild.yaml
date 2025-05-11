@@ -1,18 +1,20 @@
 steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
+    env:
+      - "TAG=${_VERSION}"
     args:
       - -c
       - |
         apt-get update && apt-get install -y gettext
         gcloud container clusters get-credentials ${_CLUSTER_NAME} --zone ${_ZONE} --project ${_PROJECT_ID}
-        echo "Deploying image ghcr.io/${_REPO_NAME}:$latest-api-${_VERSION}"
+        echo "Deploying image ghcr.io/${_REPO_NAME}:latest-api-${_VERSION}"
         envsubst < k8s/app/deployment.yaml | kubectl apply -f -
 
 logs_bucket: "gs://devops-build-log"
 
 substitutions:
-  _VERSION: "latest" #default is latest but webhook send version.
+  _VERSION: $(body.substitutions._VERSION)
   _REPO_NAME: "cgtyunerr/devops-task"
   _CLUSTER_NAME: "airline-app"
   _ZONE: "europe-north1-b"

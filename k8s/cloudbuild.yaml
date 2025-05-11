@@ -6,6 +6,7 @@ steps:
     args:
       - -c
       - |
+        apt-get update && apt-get install -y gettext
         echo "Deploying image ghcr.io/${_REPO_NAME}:${_VERSION}..."
         envsubst < k8s/app/deployment.yaml | kubectl apply -f -
 

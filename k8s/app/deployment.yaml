@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: airlines-backend
+  labels:
+    app: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: backend
+  template:
+    metadata:
+      labels:
+        app: backend
+    spec:
+      containers:
+      - name: backend
+        image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}
+        ports:
+        - containerPort: 8000
+        livenessProbe:
+          tcpSocket:
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 60
+        readinessProbe:
+          httpGet:
+            path: /health/
+            port: 8000
+          initialDelaySeconds: 5
+          periodSeconds: 60
+        resources:
+          requests:
+           cpu: "250m"
+           memory: "500Mi"
+          limits:
+            cpu: "350m"
+            memory: "1Gi"
+        envFrom:
+        - secretRef:
+            name: airlines-backend-env
+      imagePullSecrets:
+      - name: regcred

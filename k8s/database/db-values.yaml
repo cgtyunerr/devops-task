@@ -1,0 +1,22 @@
+global:
+  postgresql:
+    auth:
+      existingSecret: db-pass
+      username: airlines-app
+      database: airlines-db
+
+primary:
+  persistence:
+    enable: true
+    storageClass: standard
+    size: 12Gi
+  service:
+    ports:
+      postgresql: 30002
+  resources:
+    requests:
+      cpu: 250m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

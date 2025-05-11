@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "devops-task"
-version = "0.6.0"
+version = "0.6.1"
 description = ""
 authors = ["Çağatay Üner <cgtyuner06@gmail.com>"]
 readme = "README.md"
@@ -43,7 +43,7 @@ filterwarnings = "ignore::DeprecationWarning"
 
 [tool.commitizen]
 name = "cz_conventional_commits"
-version = "0.6.0"
+version = "0.6.1"
 tag_format = "$version"
 version_files = ["pyproject.toml", "app/api/app.py"]
 

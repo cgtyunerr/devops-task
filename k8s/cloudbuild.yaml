@@ -7,7 +7,7 @@ steps:
       - -c
       - |
         echo "Deploying image ghcr.io/${_REPO_NAME}:${_VERSION}..."
-        envsubst < app/deployment.yaml | kubectl apply -f -
+        envsubst < k8s/app/deployment.yaml | kubectl apply -f -
 
 logs_bucket: "gs://devops-build-log"
 

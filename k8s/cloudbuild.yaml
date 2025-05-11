@@ -1,0 +1,14 @@
+steps:
+  - name: 'gcr.io/cloud-builders/gcloud'
+    entrypoint: 'bash'
+    env:
+      - 'TAG: ${_VERSION}'
+    args:
+      - -c
+      - |
+        echo "Deploying image ghcr.io/${_REPO_NAME}:${_VERSION}..."
+        envsubst < k8s/deployment.yaml | kubectl apply -f -
+
+substitutions:
+  _VERSION: "latest" #default is latest but webhook send version.
+  _REPO_NAME: "cgtyunerr/devops-task"

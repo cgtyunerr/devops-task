@@ -50,4 +50,4 @@ jobs:
                 "_VERSION": "${{ github.event.release.name }}"
               }
             }' \
-            "https://cloudbuild.googleapis.com/v1/projects/advance-lacing-459309-b5/locations/europe-north1/triggers/devops-task-cd:webhook?key=${{ secrets.GCP_API_KEY }}&secret=${{ secrets.GCP_WEBHOOK_SECRET }}&trigger=devops-task-cd&projectId=advance-lacing-459309-b5"
+            "https://cloudbuild.googleapis.com/v1/projects/advance-lacing-459309-b5/triggers/devops-task-cd:webhook?key=${{ secrets.GCP_API_KEY }}&secret=${{ secrets.GCP_WEBHOOK_SECRET }}&trigger=devops-task-cd&projectId=advance-lacing-459309-b5"

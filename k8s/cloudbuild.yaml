@@ -5,7 +5,7 @@ steps:
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     env:
-      - 'TAG: ${_VERSION}'
+      - 'TAG = ${_VERSION}'
     args:
       - -c
       - |

@@ -1,4 +1,7 @@
 steps:
+  - name: 'gcr.io/cloud-builders/go'
+    args: [ 'install', '.' ]
+
   - name: 'gcr.io/cloud-builders/gcloud'
     entrypoint: 'bash'
     env:
@@ -8,6 +11,8 @@ steps:
       - |
         echo "Deploying image ghcr.io/${_REPO_NAME}:${_VERSION}..."
         envsubst < app/deployment.yaml | kubectl apply -f -
+
+logs_bucket: "gs://devops-build-log"
 
 substitutions:
   _VERSION: "latest" #default is latest but webhook send version.

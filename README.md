@@ -9,3 +9,4 @@ brew install helm
 helm install postgres oci://registry-1.docker.io/bitnamicharts/postgresql -f db-values.yaml
 gcloud services enable cloudbuild.googleapis.com
 connect repository
+gsutil mb gs://devops-build-log

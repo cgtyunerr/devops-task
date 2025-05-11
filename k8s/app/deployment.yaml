@@ -22,13 +22,13 @@ spec:
         livenessProbe:
           tcpSocket:
             port: 8000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 60
         readinessProbe:
           httpGet:
             path: /health/
             port: 8000
-          initialDelaySeconds: 5
+          initialDelaySeconds: 15
           periodSeconds: 60
         resources:
           requests:

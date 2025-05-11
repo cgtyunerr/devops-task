@@ -14,7 +14,7 @@ steps:
 logs_bucket: "gs://devops-build-log"
 
 substitutions:
-  _VERSION: $(body.substitutions._VERSION)
+  _VERSION: $(body.payload.properties.version)
   _REPO_NAME: "cgtyunerr/devops-task"
   _CLUSTER_NAME: "airline-app"
   _ZONE: "europe-north1-b"

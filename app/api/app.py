@@ -10,7 +10,7 @@ from fastapi.responses import ORJSONResponse
 app: FastAPI = FastAPI(
     title="Airline rest api.",
     description="Airline Rest Api project.",
-    version="0.6.6",
+    version="0.6.7",
 )
 
 app.add_middleware(

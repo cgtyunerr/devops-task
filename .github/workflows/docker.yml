@@ -43,7 +43,6 @@ jobs:
 
       - name: Trigger GCP cloud with webhook
         run: |
-          run: |
           curl -X POST \
             -H "Content-Type: application/json" \
             -d '{

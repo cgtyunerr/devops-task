@@ -45,9 +45,9 @@ jobs:
         run: |
           curl -X POST \
             -H "Content-Type: application/json" \
-            -d '{
-              "substitutions": {
-                "_VERSION": "${{ github.event.release.name }}"
+            -d "{
+              \"substitutions\": {
+                \"_VERSION\": \"${{ github.event.release.name }}\"
               }
-            }' \
+            }" \
             "https://cloudbuild.googleapis.com/v1/projects/advance-lacing-459309-b5/triggers/devops-task-cd:webhook?key=${{ secrets.GCP_API_KEY }}&secret=${{ secrets.GCP_WEBHOOK_SECRET }}&trigger=devops-task-cd&projectId=advance-lacing-459309-b5"

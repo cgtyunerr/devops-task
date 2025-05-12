@@ -12,4 +12,3 @@ fi
 (cd "$base_dir/secrets" && ./create-all-secrets.sh)
 (cd "$base_dir/database" && ./up-db.sh)
 (cd "$base_dir/app" && ./up-app.sh $VERSION)
-

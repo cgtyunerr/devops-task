@@ -5,8 +5,10 @@ from .exceptions import (
     NotFoundError,
     ConflictError,
     UnprocessableEntityError,
+    AuthenticationError,
 )
 from .middlewares import ErrorHandlerMiddleware
+from .service import Service
 
 __all__ = [
     "InvalidInputError",
@@ -14,4 +16,6 @@ __all__ = [
     "ConflictError",
     "UnprocessableEntityError",
     "ErrorHandlerMiddleware",
+    "AuthenticationError",
+    "Service",
 ]

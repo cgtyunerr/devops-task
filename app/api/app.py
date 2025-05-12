@@ -7,6 +7,8 @@ from fastapi.encoders import jsonable_encoder
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 
+from app.modules import ErrorHandlerMiddleware
+
 app: FastAPI = FastAPI(
     title="Airline rest api.",
     description="Airline Rest Api project.",
@@ -20,6 +22,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+app.add_middleware(ErrorHandlerMiddleware)
 
 
 @app.get(

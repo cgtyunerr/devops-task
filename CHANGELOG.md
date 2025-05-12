@@ -1,3 +1,13 @@
+## 0.7.0 (2025-05-12)
+
+### Feat
+
+- **/**: automate deployment and add side cars
+
+### Fix
+
+- **/**: fix lint errors
+
 ## 0.6.12 (2025-05-11)
 
 ### Fix

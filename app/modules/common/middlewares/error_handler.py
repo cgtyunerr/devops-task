@@ -7,7 +7,7 @@ from fastapi.responses import ORJSONResponse
 from starlette.middleware.base import BaseHTTPMiddleware
 from requests import HTTPError
 
-from app.modules import (
+from app.modules.common.exceptions import (
     ConflictError,
     InvalidInputError,
     NotFoundError,

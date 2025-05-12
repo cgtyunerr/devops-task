@@ -12,6 +12,7 @@ from app.modules.common.exceptions import (
     InvalidInputError,
     NotFoundError,
     UnprocessableEntityError,
+    AuthenticationError,
 )
 
 custom_errors: dict[Type[Exception], int] = {
@@ -19,6 +20,7 @@ custom_errors: dict[Type[Exception], int] = {
     InvalidInputError: status.HTTP_400_BAD_REQUEST,
     NotFoundError: status.HTTP_404_NOT_FOUND,
     UnprocessableEntityError: status.HTTP_422_UNPROCESSABLE_ENTITY,
+    AuthenticationError: status.HTTP_401_UNAUTHORIZED,
 }
 
 

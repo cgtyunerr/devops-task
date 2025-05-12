@@ -15,3 +15,7 @@ class ConflictError(ValueError):
 
 class UnprocessableEntityError(ValueError):
     """Item is unprocessable."""
+
+
+class AuthenticationError(ValueError):
+    """Authentication error."""

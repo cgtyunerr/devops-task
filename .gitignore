@@ -3,4 +3,4 @@
 poetry.lock
 k8s/database/secret/.env.db
 k8s/app/secret/.env
-k8s/app/secret/.env.registry
+k8s/secrets/image-registry-secret/.env.registry

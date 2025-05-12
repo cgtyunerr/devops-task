@@ -18,6 +18,8 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 
 COPY ./app /code/app
 
+COPY ./scripts /code/scripts
+
 ENV MODULE_NAME="app.api.app"
 ENV VARIABLE_NAME="app"
 ENV WORKERS_PER_CORE=2

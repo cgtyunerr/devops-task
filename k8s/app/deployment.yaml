@@ -14,6 +14,21 @@ spec:
       labels:
         app: backend
     spec:
+      initContainers:
+      - name: wait-for-postgres
+        image: busybox
+        command: ['sh', '-c', 'until nc -z -v -w30 $DB__HOST $DB_PORT; do echo "Waiting for PostgreSQL..."; sleep 5; done;']
+        envFrom:
+        - secretRef:
+            name: airlines-backend-env
+      - name: run-migrations
+        image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}
+        command: [ "bin/sh" ]
+        args: [ "scripts/migrate-all.sh" ]
+        envFrom:
+          - secretRef:
+              name: airlines-backend-env
+
       containers:
       - name: backend
         image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}

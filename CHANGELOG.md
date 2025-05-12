@@ -1,3 +1,10 @@
+## 0.8.0 (2025-05-12)
+
+### Feat
+
+- **/**: add runner makefile and add uvicorn
+- **modules/common**: add error handler middleware
+
 ## 0.7.0 (2025-05-12)
 
 ### Feat

@@ -7,9 +7,9 @@ steps:
         gcloud container clusters get-credentials ${_CLUSTER_NAME} --zone ${_ZONE} --project ${_PROJECT_ID}
         echo "Deploying image ghcr.io/${_REPO_NAME}:latest-api-${_VERSION}"
         kubectl delete job migration-job --ignore-not-found
-        sed "s|\${_TAG}|${_VERSION}|g" k8s/app/job.yaml | kubectl apply -f -
+        sed 's/{_TAG}/${_VERSION}' k8s/app/job.yaml | kubectl apply -f -
         kubectl wait --for=condition=complete --timeout=180s job/migration-job
-        sed "s|\${_TAG}|${_VERSION}|g" k8s/app/job.yaml | kubectl apply -f -s
+        sed 's/{_TAG}/${_VERSION}' k8s/app/deployment.yaml | kubectl apply -f -
 
 logs_bucket: "gs://devops-build-log"
 

@@ -9,5 +9,7 @@ if [ "$DB__HOST" != "localhost" ] && [ "$DB__HOST" != "127.0.0.1" ]; then
 fi
 
 scripts/migrate.sh app/modules/user/pymigrate users
+scripts/migrate.sh app/modules/airline/pymigrate airlines
 
 poetry run python app/modules/user/tests/setup/manual_setup.py
+poetry run python app/modules/airline/tests/setup/manual_setup.py

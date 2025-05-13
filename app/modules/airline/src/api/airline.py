@@ -93,5 +93,18 @@ async def get_all_airlines(
     user_id: Annotated[int, Depends(get_current_user)],
 ):
     """Get all airlines."""
-    result = airline_service.get_all_airlines()
+    result = await airline_service.get_all_airlines()
     return ORJSONResponse(content=jsonable_encoder(result))
+
+
+@airline_router.delete(
+    path="/{airline_id}/",
+    summary="Delete airline.",
+    status_code=status.HTTP_204_NO_CONTENT,
+)
+async def delete_airline(
+    user_id: Annotated[int, Depends(get_current_user)],
+    airline_id: Annotated[AirlineIdPathDependency, Depends()],
+):
+    """Delete airline."""
+    await airline_service.delete_airline(airline_id=airline_id.airline_id)

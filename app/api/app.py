@@ -15,7 +15,7 @@ from app.modules.user import user_router
 app: FastAPI = FastAPI(
     title="Airline rest api.",
     description="Airline Rest Api project.",
-    version="1.0.4",
+    version="1.0.5",
 )
 
 app.add_middleware(

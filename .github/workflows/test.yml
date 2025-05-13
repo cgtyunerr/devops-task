@@ -61,3 +61,7 @@ jobs:
 
       - name: Project tests
         run: poetry run python -m pytest -lv tests
+
+      - name: User Module Tests
+        run: |
+          scripts/test.sh app/modules/user

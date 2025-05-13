@@ -42,4 +42,4 @@ def check_password(password: str, hashed_pw: str) -> None:
         LoginFailedError: If the password is not correct.
     """
     if not get_password_context().verify(password, hashed_pw):
-        raise AuthenticationError
+        raise AuthenticationError("Login credentials are not correct.")

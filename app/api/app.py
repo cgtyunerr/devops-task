@@ -8,6 +8,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import ORJSONResponse
 
 from app.modules import ErrorHandlerMiddleware
+from app.modules.airline import airline_router
 from app.modules.user import user_router
 
 app: FastAPI = FastAPI(
@@ -27,6 +28,7 @@ app.add_middleware(
 app.add_middleware(ErrorHandlerMiddleware)
 
 app.include_router(user_router)
+app.include_router(airline_router)
 
 
 @app.get(

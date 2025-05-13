@@ -9,6 +9,7 @@ from .exceptions import (
 )
 from .middlewares import ErrorHandlerMiddleware
 from .service import Service
+from .utils import create_model_from_query_result
 
 __all__ = [
     "InvalidInputError",
@@ -18,4 +19,5 @@ __all__ = [
     "ErrorHandlerMiddleware",
     "AuthenticationError",
     "Service",
+    "create_model_from_query_result",
 ]

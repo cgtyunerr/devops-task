@@ -1,3 +1,9 @@
+## 1.0.0 (2025-05-13)
+
+### Feat
+
+- **app/modules/aircraft**: add aircraft module
+
 ## 0.10.0 (2025-05-13)
 
 ### Feat

@@ -9,4 +9,4 @@ script_dir=$(dirname "$0")
 path="$1"
 schema="$2"
 
-poetry python $script_dir/python-scripts/migration.py $path $schema
+poetry run python $script_dir/python-scripts/migration.py $path $schema

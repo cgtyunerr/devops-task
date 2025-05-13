@@ -1,7 +1,8 @@
 """Database factory."""
 
 from app.config import settings
-from .sql import SqlDatabase, SqlEngine
+from .sql import SqlDatabase
+from .sql.sql_connection import SqlEngine
 
 
 class DatabaseFactory:

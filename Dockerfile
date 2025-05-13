@@ -19,6 +19,7 @@ RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
 COPY ./app /code/app
 
 COPY ./deployment-scripts /code/deployment-scripts
+ENV PYTHONPATH=/code
 
 ENV MODULE_NAME="app.api.app"
 ENV VARIABLE_NAME="app"

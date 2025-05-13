@@ -14,7 +14,7 @@ kubectl delete job migration-job --ignore-not-found
 
 echo "Applying migration job..."
 
-if sed "s/\${TAG}/$VERSION/g" "$base_dir/job.yaml" | kubectl apply -f -; then
+if sed "s/\${_TAG}/$VERSION/g" "$base_dir/job.yaml" | kubectl apply -f -; then
   echo "Migration job applied. Waiting for it to complete..."
 else
   echo "Error: Migration job could not be created"
@@ -33,7 +33,7 @@ else
 fi
 
 
-if sed "s/\${TAG}/$VERSION/g" $base_dir/deployment.yaml | kubectl apply -f -; then
+if sed "s/\${_TAG}/$VERSION/g" $base_dir/deployment.yaml | kubectl apply -f -; then
   echo "Deployment applied with VERSION: $VERSION"
 else
   echo "Error: Deployment failed"

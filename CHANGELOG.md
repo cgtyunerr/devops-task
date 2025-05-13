@@ -1,3 +1,10 @@
+## 0.10.0 (2025-05-13)
+
+### Feat
+
+- **modules/airline**: add airline api
+- **app/modules/airline**: add airline service and migrations
+
 ## 0.9.0 (2025-05-13)
 
 ### Feat

@@ -1,3 +1,9 @@
+## 1.0.2 (2025-05-13)
+
+### Fix
+
+- **pyproject.toml**: fix dependency problem
+
 ## 1.0.1 (2025-05-13)
 
 ### Fix

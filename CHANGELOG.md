@@ -1,3 +1,10 @@
+## 0.9.0 (2025-05-13)
+
+### Feat
+
+- **app**: add api router and fix some database bugs
+- **app/modules/user**: create user module and add service and utils
+
 ## 0.8.0 (2025-05-12)
 
 ### Feat

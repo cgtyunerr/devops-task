@@ -1,6 +1,6 @@
 """User pydantic models."""
 
-from user import UserCreateModel
+from .user import UserCreateModel
 
 __all__ = [
     "UserCreateModel",

@@ -3,5 +3,5 @@ CREATE SCHEMA IF NOT EXISTS users;
 CREATE TABLE IF NOT EXISTS users.user(
     id SERIAL PRIMARY KEY,
     username TEXT NOT NULL UNIQUE,
-    password TEXT NOT NULL,
+    password TEXT NOT NULL
 );

@@ -89,7 +89,7 @@ class UserService(Service):
             [(user_id, username, hashed_pw)] = await self.fetch_from_db(query)
             return user_id, username, hashed_pw
         except ValueError:
-            raise AuthenticationError("User not found.")
+            raise AuthenticationError("Login credentials are not correct.")
 
     @validate_call
     async def _insert_user_to_db(self, body: UserCreateModel, hashed_pw: str) -> int:
@@ -111,7 +111,7 @@ class UserService(Service):
                 user_table.username,
                 user_table.password,
             )
-            .insert(body.name, body.email, body.partner_id, hashed_pw)
+            .insert(body.username, hashed_pw)
         )
 
         try:

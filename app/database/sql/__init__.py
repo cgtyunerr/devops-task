@@ -1,11 +1,15 @@
 """Sql database module."""
 
-from .sql_connection import SqlEngine
-from .sql_database import SqlDatabase
-from .sql_operations import SqlOperations
+from pydantic import BaseModel
 
-__all__ = [
-    "SqlDatabase",
-    "SqlOperations",
-    "SqlEngine",
-]
+from .sql_connection import SqlEngine
+
+
+class SqlDatabase(BaseModel):
+    """Sql Database class.
+
+    Attributes:
+        engine: PSqlEngine to use for performing the database operations.
+    """
+
+    engine: SqlEngine

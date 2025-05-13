@@ -5,17 +5,18 @@ metadata:
 spec:
   template:
     spec:
+      restartPolicy: OnFailure
       initContainers:
       - name: wait-for-postgres
         image: busybox
-        command: ['sh', '-c', 'until nc -z -v -w30 $DB__HOST $DB_PORT; do echo "Waiting for PostgreSQL..."; sleep 5; done;']
+        command: ['sh', '-c', 'until nc -z -v -w30 $DB__HOST $DB__PORT; do echo "Waiting for PostgreSQL..."; sleep 5; done;']
         envFrom:
         - secretRef:
             name: airlines-backend-env
       containers:
       - name: run-migration-up
         image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}
-        command: ["bin/bash", "-c", "./deployment-scripts/migrate-all.sh"]
+        command: ["/bin/sh", "-c", "./deployment-scripts/migrate-all.sh"]
         envFrom:
         - secretRef:
             name: airlines-backend-env

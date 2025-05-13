@@ -10,6 +10,8 @@ fi
 
 scripts/migrate.sh app/modules/user/pymigrate users
 scripts/migrate.sh app/modules/airline/pymigrate airlines
+scripts/migrate.sh app/modules/aircraft/pymigrate aircrafts
 
 poetry run python app/modules/user/tests/setup/manual_setup.py
 poetry run python app/modules/airline/tests/setup/manual_setup.py
+poetry run python app/modules/aircraft/tests/setup/manual_setup.py

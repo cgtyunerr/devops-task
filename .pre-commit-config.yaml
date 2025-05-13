@@ -39,13 +39,13 @@ repos:
     rev: 1.7.4
     hooks:
       - id: bandit
-        exclude: ^(tests/|.*/tests/.*/|scripts/|conftest.py)
+        exclude: ^(tests/|.*/tests/.*/|scripts/|conftest.py|deployment-scripts/)
 
   - repo: https://github.com/pycqa/pydocstyle
     rev: 6.1.1
     hooks:
       - id: pydocstyle
-        exclude: ^(tests/|.*/tests/.*|conftest.py|scripts/)
+        exclude: ^(tests/|.*/tests/.*|conftest.py|scripts/|deployment-scripts/)
         additional_dependencies:
           - toml
 
@@ -60,4 +60,4 @@ repos:
           - types-requests
           - types-python-dateutil
           - types-pytz
-        exclude: ^(tests/|.*/tests/.*/|scripts/)
+        exclude: ^(tests/|.*/tests/.*/|scripts/|deployment-scripts)

@@ -10,6 +10,29 @@ if [ -z "$VERSION" ]; then
   exit 1
 fi
 
+kubectl delete job db-migration-job --ignore-not-found
+
+echo "Applying migration job..."
+
+if sed "s/\${TAG}/$VERSION/g" "$base_dir/migration-job.yaml" | kubectl apply -f -; then
+  echo "Migration job applied. Waiting for it to complete..."
+else
+  echo "Error: Migration job could not be created"
+  exit 1
+fi
+
+JOB_NAME="db-migration-job"
+TIMEOUT=300
+
+if kubectl wait --for=condition=complete --timeout=${TIMEOUT}s job/$JOB_NAME; then
+  echo "Migration job completed successfully."
+else
+  echo "Error: Migration job failed or timed out"
+  kubectl logs job/$JOB_NAME
+  exit 1
+fi
+
+
 if sed "s/\${TAG}/$VERSION/g" $base_dir/deployment.yaml | kubectl apply -f -; then
   echo "Deployment applied with VERSION: $VERSION"
 else

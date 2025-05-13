@@ -1,4 +1,4 @@
-"""Router for user module."""
+"""Router for airline module."""
 
 from typing import Annotated
 
@@ -24,7 +24,7 @@ airline_service: AirlineService = airline_factory()
 
 
 class AirlineIdPathDependency(BaseModel):
-    """Device group ID path dependency."""
+    """Airline ID path dependency."""
 
     airline_id: int = Path(
         description="The airline ID.",

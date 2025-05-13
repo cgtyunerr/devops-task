@@ -7,7 +7,7 @@ from app.modules.airline.src.service.airline import AirlineService
 
 
 class AirlineFactory:
-    """User factory class."""
+    """Airline factory class."""
 
     @staticmethod
     @lru_cache(maxsize=1)

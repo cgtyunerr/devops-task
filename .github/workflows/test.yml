@@ -65,3 +65,7 @@ jobs:
       - name: User Module Tests
         run: |
           scripts/test.sh app/modules/user
+
+      - name: Airline Module Tests
+        run: |
+          scripts/test.sh app/modules/airline

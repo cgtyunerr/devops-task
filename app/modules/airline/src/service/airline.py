@@ -97,7 +97,7 @@ class AirlineService(Service):
         return create_model_from_query_result(
             model=AirlineModel,
             query_result=query_result,
-            params=["id", "name", "facility_id"],
+            params=["id", "name", "callsign", "founded_year", "base_airport"],
         )[0]
 
     @validate_call
@@ -116,5 +116,20 @@ class AirlineService(Service):
         return create_model_from_query_result(
             model=AirlineModel,
             query_result=query_result,
-            params=["id", "name", "facility_id"],
+            params=["id", "name", "callsign", "founded_year", "base_airport"],
         )
+
+    @validate_call
+    async def delete_airline(self, airline_id: int) -> None:
+        """Delete an airline.
+
+        Arguments:
+            airline_id: Airline id.
+
+        Returns:
+            None.
+        """
+        query = (
+            Query.from_(airline_table).delete().where(airline_table.id == airline_id)
+        )
+        await self.execute_in_db(query=query)

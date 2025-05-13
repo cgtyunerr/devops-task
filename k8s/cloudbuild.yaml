@@ -9,7 +9,7 @@ steps:
         kubectl delete job migration-job --ignore-not-found
         sed "s|\${_TAG}|${_VERSION}|g" k8s/app/job.yaml | kubectl apply -f -
         kubectl wait --for=condition=complete --timeout=180s job/migration-job
-        sed "s|\${TAG}|${_VERSION}|g" k8s/app/job.yaml | kubectl apply -f -
+        sed "s|\${_TAG}|${_VERSION}|g" k8s/app/job.yaml | kubectl apply -f -s
 
 logs_bucket: "gs://devops-build-log"
 

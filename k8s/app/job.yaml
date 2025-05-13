@@ -15,7 +15,7 @@ spec:
             name: airlines-backend-env
       containers:
       - name: run-migration-up
-        image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}
+        image: ghcr.io/cgtyunerr/devops-task:latest-api-${_TAG}
         command: ["/bin/sh", "-c", "./deployment-scripts/migrate-all.sh"]
         envFrom:
         - secretRef:

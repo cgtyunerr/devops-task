@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: backend
-        image: ghcr.io/cgtyunerr/devops-task:latest-api-${TAG}
+        image: ghcr.io/cgtyunerr/devops-task:latest-api-${_TAG}
         ports:
         - containerPort: 8000
         livenessProbe:

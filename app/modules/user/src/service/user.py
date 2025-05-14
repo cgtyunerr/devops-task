@@ -38,7 +38,7 @@ class UserService(Service):
         check_password(password=password, hashed_pw=hashed_pw)
 
         token: str = jwt.encode({"user_id": user_id}, settings.JWT_SECRET)
-        login_result: UserLogin = UserLogin(
+        login_result: UserLogin = UserLogin(  # nosec
             username=username,
             access_token=token,
             token_type="bearer",

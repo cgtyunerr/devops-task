@@ -1,3 +1,11 @@
+## 1.0.8 (2025-05-14)
+
+### Fix
+
+- **app/modules/user/tests/integration**: fix integration test bug
+- **app/modules/user/src/service**: skip security check
+- **/**: fix some bugs
+
 ## 1.0.7 (2025-05-14)
 
 ### Fix

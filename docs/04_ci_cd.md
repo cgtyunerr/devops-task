@@ -8,19 +8,19 @@
 
 
 ## General Information
-All the CI/CD process are made by github workflows and Google build api. .github/test.yml is completely about CI process. 
+All the CI/CD process are made by github workflows and Google build api. .github/test.yml is completely about CI process.
 It makes project tests, necessary checks and necessary caching.
 
 ## CI
 We can divide 4 stage to our CI process.
 
-### 1) Running Stage 
-Firstly we must run our workflows on a docker image. We choose "Ubuntu" for this 
+### 1) Running Stage
+Firstly we must run our workflows on a docker image. We choose "Ubuntu" for this
 stage because a lot of tools is installed inside of it.
 
 ### 2) Preparing Stage
-After run the workflow, we prepare environment to our main purpose. In this stage, we checkout our code, install python, 
-start docker compose for up a database for our tests, install poetry and cache 
+After run the workflow, we prepare environment to our main purpose. In this stage, we checkout our code, install python,
+start docker compose for up a database for our tests, install poetry and cache
 dependencies to reduce our waiting time for next CI processes.
 
 ### 3) Test Stage
@@ -33,11 +33,11 @@ In this stage we need some repository secret creations in our repo. In repositor
 
 ![Logo](./images/github_secrets.png)
 We obtain GCP secrets in GCP. We must create personal access token in github.
-When push event is happened, this trigger on push in main.yml. If this push is not about main branch, 
-just test in test.yml is triggered. However, if this push is about main branch test and release stages are triggered. 
+When push event is happened, this trigger on push in main.yml. If this push is not about main branch,
+just test in test.yml is triggered. However, if this push is about main branch test and release stages are triggered.
 Test stage is same with CI process. In this project, we use commitizen for conventional commits and version system.
 In release, commitizen check is new version happened. If happened, it update or create CHANGELOG.md and create new
-version by using PAT(personal access token). When new version is released, stage in docker.yml is triggered. It creates 
+version by using PAT(personal access token). When new version is released, stage in docker.yml is triggered. It creates
 new docker image and push it ghcr.io and it triggered gcp with webhooks by using GCP secrets.
 
 ### GCP stage
@@ -50,7 +50,7 @@ All the steps are happened in cloud build side of the gcp.
 We choose region, We must choose webhook event as a trigger type.
 
 ![Logo](./images/trigger2.png)
-We choose repository. Revision is not important because we trigger cloud build in github workflows. We must create a 
+We choose repository. Revision is not important because we trigger cloud build in github workflows. We must create a
 secret for webhook and if we press "show URL preview" button, we see our url that is used for initializing CD process
 in cloud. We must create action secret in github by using key and secret in this url.
 

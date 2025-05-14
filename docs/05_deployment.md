@@ -54,15 +54,15 @@ or
 ./k8s/database/up-db.sh
 ```
 
-This command creates database architecture by using values in db-values.yaml. If you want to change configuration, you 
+This command creates database architecture by using values in db-values.yaml. If you want to change configuration, you
 can check https://artifacthub.io/packages/helm/bitnami/postgresql.
 ## Backend App
 Backend app consists of 3 components:
-- job: Main purpose of job is check database connection and send migration to database. deployment scripts is used by 
+- job: Main purpose of job is check database connection and send migration to database. deployment scripts is used by
 the job. There is need to change {_TAG} with real tag but cd and up-app.sh scripts handle it.
 - deployment: The deployment provides initialization of 2 backend app pods. This pods has liveness and readiness probes.
 If unlive condition is happened, pod restart container. If unready condition is happened, service stop to direct traffic
-to this pod, until it will be ready again. There is need to change {_TAG} with real tag but cd and up-app.sh scripts 
+to this pod, until it will be ready again. There is need to change {_TAG} with real tag but cd and up-app.sh scripts
 handle it.
-- loadBalancer: Load balancer is service of the pods that is created by the deployment. It provides load balancing to 
+- loadBalancer: Load balancer is service of the pods that is created by the deployment. It provides load balancing to
 the pods and provides external ip for reach app.

@@ -98,4 +98,3 @@ this layer of the module.
 
 This layer is responsible for response handling of the `service` layer
 methods. It should return the appropriate response or error code.
-

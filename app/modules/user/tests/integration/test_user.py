@@ -40,7 +40,7 @@ class TestLogin:
                 password="testpassword", hashed_pw="hashed_pw"
             )
 
-            decoded_token = jwt.decode(result, settings.JWT_SECRET)
+            decoded_token = jwt.decode(result.access_token, settings.JWT_SECRET)
 
             assert len(decoded_token) == 1
             assert decoded_token["user_id"] == 100

@@ -8,7 +8,7 @@ from fastapi.responses import ORJSONResponse
 from fastapi.security import OAuth2PasswordRequestForm
 from starlette import status
 
-from app.modules.user.models import UserCreateModel
+from app.modules.user.models import UserCreateModel, UserLogin
 from app.modules.user.src.factory import UserFactory
 from app.modules.user.src.service.user import UserService
 
@@ -38,7 +38,7 @@ async def register(body: UserCreateModel):
 @user_router.post(
     "/login/",
     summary="Allows the user to login.",
-    response_model=str,
+    response_model=UserLogin,
     status_code=status.HTTP_201_CREATED,
 )
 async def login(

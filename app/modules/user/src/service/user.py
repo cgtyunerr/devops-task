@@ -7,7 +7,7 @@ from pypika import Query
 
 from app.config import settings
 from app.modules.common import ConflictError, Service, AuthenticationError
-from app.modules.user.models import UserCreateModel
+from app.modules.user.models import UserCreateModel, UserLogin
 from app.modules.user.src.service import user_table
 from app.modules.user.src.service.utils import check_password, hash_password
 
@@ -16,7 +16,7 @@ class UserService(Service):
     """User service class."""
 
     @validate_call
-    async def login(self, username: str, password: str) -> str:
+    async def login(self, username: str, password: str) -> UserLogin:
         """Login the user.
 
         Arguments:
@@ -38,8 +38,13 @@ class UserService(Service):
         check_password(password=password, hashed_pw=hashed_pw)
 
         token: str = jwt.encode({"user_id": user_id}, settings.JWT_SECRET)
+        login_result: UserLogin = UserLogin(
+            username=username,
+            access_token=token,
+            token_type="bearer",
+        )
 
-        return token
+        return login_result
 
     @validate_call
     async def register(self, body: UserCreateModel) -> int:

@@ -13,3 +13,17 @@ class UserCreateModel(BaseModel):
 
     username: str
     password: str
+
+
+class UserLogin(BaseModel):
+    """User login model.
+
+    Attributes:
+        access_token: Access token.
+        token_type: Token type (bearer).
+        username: Email of the user.
+    """
+
+    access_token: str
+    token_type: str
+    username: str
